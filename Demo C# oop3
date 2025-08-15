@@ -121,3 +121,186 @@ namespace Session03OOPDemo
 }
 
 
+
+// main.cs
+
+using Helper;
+
+namespace Session03OOPDemo
+{
+    
+    
+    internal class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            
+            #region Inheretence
+            
+            
+            /*
+            
+               Inheretence :-
+               
+                     - one of Pillars of Object Orianted Programming
+                     - Avoid code dublication
+                     
+                     
+                     
+                c# Support 3 Category of Inheretence
+                
+                
+                     1- single Inher
+                     
+                        - Class Inherit From Only One Class
+                    
+                    2 - Multilevel Inher
+                    
+                        - Class Inherit From Class And This Class Inherit From Another Class
+                        
+                             parent
+                             child
+                             Grand child
+                             
+                    3- HierInher
+                    
+                       - Multiple Classes Can Inherit From Only One Base Class
+                       
+                    * C#  Doesnt Allow Multiple Inheretence X
+            
+            
+            */
+            
+            // Parent p1 = new Parent(2,3);
+            
+            // p1.X = 10;
+            // p1.Y = 20;
+            
+            // Console.WriteLine(p1);
+            // Console.WriteLine(p1.Multiply());
+            
+            // p1.MyFunc();
+            
+            Child c1 = new Child(1,2,3);
+            
+            c1.X = 100;
+            c1.Y = 200;
+            c1.Z = 300;
+            
+            
+            Console.WriteLine(c1);
+            Console.WriteLine(c1.Multiply());
+            c1.MyFunc();
+            
+            
+            #endregion
+            
+            #region Access Modifires
+            
+            TypeA typeA = new TypeA();
+            
+            // typeA.A = 1;   // private
+            // typeA.B = 2;   // internal
+            
+            
+            typeA.C = 3;
+            typeA.X = 4;
+            typeA.Y = 5;
+            
+            typeA.Z = 6;
+            
+            
+            #endregion
+            
+            
+        }
+    }
+}
+
+
+//TypeA.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Helper
+{
+    
+    public class TypeA
+    {
+        private int A;
+        internal int B;
+        public int C;
+        
+        private protected int X;
+        protected int Y;
+        protected internal int Z;
+    }
+}
+
+
+// TypeB.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Helper
+{
+    internal class TypeB : TypeA
+    {
+        
+        public TypeB()
+        {
+            // A = 1; // private Attr cant Inherted
+            
+            B = 2; // inherited - internal
+            
+            C = 3; // inherited - public
+            
+            X = 4; // inherited - private protected - private
+            
+            Y = 5; // inherited - protected - private
+            
+            Z = 6; // inherited - internal protected - internal
+        }
+        
+        
+    }
+}
+
+// TypeC.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Helper
+{
+   internal class TypeC
+   {
+       public Test
+       {
+           TypeB typeB = new TypeB();
+           
+           typeB.B = 1;
+           typeB.C = 2;
+           
+           typeB.X = 3;
+           typeB.Y = 4;
+           typeB.Z = 5;
+       }
+   }
+}
+
+
+
+
