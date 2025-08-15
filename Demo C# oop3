@@ -302,5 +302,83 @@ namespace Helper
 }
 
 
+// TypeA.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace S04OOPDemo.PolyMorphismOveriding
+{
+    
+    internal class TypeA
+    {
+        public int A {get; set;}
+        
+        public TypeA(int _A)
+        {
+            A = _A;
+            
+        }
+        
+        public void Func1()
+        {
+            Console.WriteLine("Parent Class");
+        }
+        
+        public virtual void Func2()
+        {
+            Console.WriteLine($"TypeA : A = {A}");
+        }
+    }
+    
+}
+
+// TypeB.cs
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace S04OOPDemo.PolyMorphismOveriding
+{
+    
+    internal class TypeB : TypeA
+    {
+        
+        public int B {get; set;}
+        
+        
+        public TypeB(int _A, int _B):base(_A)
+        {
+            
+            B = _B;
+            
+        }
+        
+        public new void Func1()
+        {
+            Console.WriteLine("child Class");
+        }
+        
+        
+        public override void Func2()
+        {
+         
+         
+                Console.WriteLine($"TypeB : A = {A} | B = {B}") ;
+        }
+    }
+}
+        
+
+
 
 
