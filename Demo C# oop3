@@ -623,4 +623,224 @@ namespace S04OOPDemo
 }
 
 
+// program.cs
+
+namespace S04OOPDemo
+{
+    
+    
+    internal class Program
+    {
+        
+        #region Method Overloading
+        
+        public static int Sum(int X , int Y)
+        {
+            return X + Y;
+        }
+        
+        public static int Sum(int X , int Y , int Z)
+        {
+            return X + Y + Z;
+        }
+        
+        public static int Sum(double X , double Y)
+        {
+            return X + Y;
+        }
+        
+        #endregion
+        
+        
+        static void Main(string[] args)
+        {
+            #region Polymorphism
+            
+            
+            /*
+               poly => Many
+               
+               Morphism => Forms
+               
+               
+               oveloading :-
+               
+                        -support in class , struct
+                        
+                        -Method Overloading
+                        
+                                count of parameter | datatype of parameters | arrange of parameters
+                                
+                        -types of Overloading
+                            1- CTOR Overloading
+                            2- operator Overloading
+                            3- Method Overloading
+                            4- casting operator Overloading
+                            5- indexer Overloading
+                            
+               override
+               
+                       -must exist with inheritence
+                       -support in class only
+                       - use keyword new
+                       -use keyword override
+            */
+            
+            #region Method Overloading
+        
+            // Console.WriteLine(Sum(1,2));
+            // Console.WriteLine(Sum(1,2,3));
+            // Console.WriteLine(Sum(1.4,2.6));
+            
+            
+            #endregion
+            
+            #region overriding
+            
+            TypeB typeB = new TypeB(1, 2);
+            
+            typeB.Func1();
+            typeB.Func2();
+            
+            #endregion
+            
+            
+            #region  Operator Overloading
+            
+            
+            /*
+                Complex Number : 2 + 3i + 3 + 5i
+            
+            */
+            
+            // Complex c1 = new Complex() { Real = 2, Imag = 3};
+            // Complex c2 = new Complex() { Real = 4, Imag = 5};
+            
+            // Complex c3 = default;
+            
+            // c3 = c1 + c2;
+            
+            // c3 = c1 - c2;
+            
+            // c1++;
+            
+            // Console.WriteLine(c1);
+            // Console.WriteLine(c2);
+            
+            // Console.WriteLine(c3);
+            
+            
+            // if (c1 > c2)
+            //     Console.WriteLine("c1 Greater than c2");
+                
+            // else
+            
+            //     Console.WriteLine("c1 less than c2");
+                
+            // #endregion
+            
+        
+            #endregion
+            
+            
+            #region casting Operator Overloading
+            
+            Complex c1 = new Complex() { Real = 2, Imag = 3};
+            Complex c2 = new Complex() { Real = 4, Imag = 5};
+            
+            // int Y = (int) c1;
+            // Console.WriteLine(Y);
+            
+            
+            string str = (string)c1;
+            
+            Console.WriteLine(str);
+            
+            #endregion
+            
+            
+            #endregion
+            
+            
+            #region static class
+            
+            // Helper h1 = new Helper(1,2);
+            
+            // Helper h2 = new Helper(1,2);
+            // Console.WriteLine(Helper.CmToInch(50));
+            
+            // Console.WriteLine(Helper.CmToInch(254));
+            // Console.WriteLine(Helper.CalcCircleArea(10));
+            #endregion
+            
+            #region SealedClass
+            
+            // sealed class prevent inheritence
+            
+            Parent p1 = new Parent();
+            
+            p1.Print();
+            
+            #endregion
+            
+            #region partial class
+            
+            Employee E1 = new Employee()
+            {
+                Id = 1,
+                Name = "Ahmed",
+                Age = 20,
+                Salary = 5000,
+                CompanyName = "route"
+            };
+            
+            #endregion
+        }
+    }
+}
+
+
+// Employee.cs
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace S04OOPDemo
+{
+    internal partial class Employee
+    {
+        public int Id {get; set;}
+        public string Name {get; set;}
+        public int Age {get; set;}
+        
+    }
+}
+
+
+// employeeDevelober.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace S04OOPDemo
+{
+    internal partial class Employee
+    {
+        
+        public int Salary {get; set;}
+        
+        public string CompanyName {get; set;}
+    }
+}
+
+
+
+
 
