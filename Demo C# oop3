@@ -55,6 +55,8 @@ namespace Session03OOPDemo
             return $"X = {X} , Y = {Y}";
         }
         #endregion
+    }
+}
 
 
 // Child.cs
@@ -119,7 +121,3 @@ namespace Session03OOPDemo
 }
 
 
-
-
-    }
-}
