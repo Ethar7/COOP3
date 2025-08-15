@@ -400,11 +400,7 @@ namespace S04OOPDemo.PolyMorphismOveriding
         
         public int Imag {get; set;}
         
-        // public override string ToString()
-        // {
-        //     return $"{Real} + {Imag}i";
-        // }
-        
+        #region operator Overloading
         // operator Overloading => public class Member Method = Static
         
         // operator +
@@ -469,7 +465,27 @@ namespace S04OOPDemo.PolyMorphismOveriding
                
         }
         
+        #endregion
         
+        #region Casting Overloading
+        
+        public static explicit operator int(Complex c)
+        {
+            return c.Real;
+        }
+        
+        public static implicit operator string(Complex c)
+        {
+            return c?.ToString() ?? string Empty;
+        }
+        
+        #endregion
+        
+        
+        public override string ToString()
+        {
+            return $"{Real} + {Imag}i";
+        }
         
     }
     
