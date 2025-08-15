@@ -313,4 +313,224 @@ namespace Shapes
 
 // Q3
 
+using System;
+
+namespace MathOperations
+{
+    public class Complex
+    {
+        public double Real { get; set; }
+        public double Imag { get; set; }
+
+        
+        public Complex(double real, double imag)
+        {
+            Real = real;
+            Imag = imag;
+        }
+
+        
+        public static Complex operator +(Complex left, Complex right)
+        {
+            return new Complex(
+                left.Real + right.Real,
+                left.Imag + right.Imag
+            );
+        }
+
+       
+        public static Complex operator -(Complex left, Complex right)
+        {
+            return new Complex(
+                left.Real - right.Real,
+                left.Imag - right.Imag
+            );
+        }
+
+        public override string ToString()
+        {
+            return $"{Real} + {Imag}i";
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Complex num1 = new Complex(3, 4);    
+            Complex num2 = new Complex(1, -2);   
+
+            Complex sum = num1 + num2;           
+            Complex diff = num1 - num2;          
+
+            Console.WriteLine($"Num1 = {num1}");
+            Console.WriteLine($"Num2 = {num2}");
+            Console.WriteLine($"Sum  = {sum}");
+            Console.WriteLine($"Diff = {diff}");
+        }
+    }
+}
+
+
+// ---------------------------------------------------------------
+
+// Q4
+
+using System;
+
+namespace Company
+{
+    public class Employee
+    {
+        public virtual void Work()
+        {
+            Console.WriteLine("Employee is working");
+        }
+    }
+
+  
+    public class Manager : Employee
+    {
+        public override void Work()
+        {
+            
+            base.Work();
+
+            Console.WriteLine("Manager is managing");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee emp = new Employee();
+            emp.Work();
+
+            Console.WriteLine();
+
+            Manager mgr = new Manager();
+            mgr.Work();
+        }
+    }
+}
+
+
+//  -------------------------------------------------------------------
+
+
+//    part 3
+
+// Q1
+
+using System;
+
+namespace Time
+{
+    public class Duration
+    {
+        public int Hours { get; set; }
+        public int Minutes { get; set; }
+        public int Seconds { get; set; }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Duration d = new Duration();
+            d.Hours = 1;
+            d.Minutes = 30;
+            d.Seconds = 45;
+
+            Console.WriteLine($"Hours: {d.Hours}, Minutes: {d.Minutes}, Seconds: {d.Seconds}");
+        }
+    }
+}
+
+
+// --------------------------------------------------------------------
+
+// Q2
+
+public override string ToString()
+{
+    return base.ToString();
+}
+
+public override bool Equals(object obj)
+{
+    return base.Equals(obj);
+}
+
+public override int GetHashCode()
+{
+    return base.GetHashCode();
+}
+
+
+// ------------------------------------------------------------------------
+
+// Q3
+
+
+using System;
+
+public class Duration
+{
+    public int Hours { get; set; }
+    public int Minutes { get; set; }
+    public int Seconds { get; set; }
+
+    
+    public Duration(int hours, int minutes, int seconds)
+    {
+        Hours = hours;
+        Minutes = minutes;
+        Seconds = seconds;
+    }
+
+    public Duration(int totalSeconds)
+    {
+        Hours = totalSeconds / 3600;
+        totalSeconds %= 3600;
+
+        Minutes = totalSeconds / 60;
+        Seconds = totalSeconds % 60;
+    }
+
+ 
+    public override string ToString()
+    {
+        if (Hours > 0)
+            return $"Hours: {Hours}, Minutes: {Minutes}, Seconds: {Seconds}";
+        else
+            return $"Minutes: {Minutes}, Seconds: {Seconds}";
+    }
+}
+
+
+class Program
+{
+    static void Main()
+    {
+        Duration D1 = new Duration(1, 10, 15);
+        Console.WriteLine(D1);
+
+        Duration D2 = new Duration(3600);
+        Console.WriteLine(D2);
+
+        Duration D3 = new Duration(7800);
+        Console.WriteLine(D3);
+
+        Duration D4 = new Duration(666);
+        Console.WriteLine(D4);
+    }
+}
+
+// ---------------------------------------------------------
+
+
+
+
 
