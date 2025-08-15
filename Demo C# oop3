@@ -1,0 +1,125 @@
+// parent.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+namespace Session03OOPDemo
+{
+    
+    internal class Parent
+    {
+        
+        #region Properties
+        public int X {get; set;}
+        
+        public int Y {get; set;}
+        
+        
+        #endregion
+        
+        
+        #region CTOR
+        public Parent(int _x, int _y)
+        {
+            
+            X = _x;
+            Y = _y;
+            
+        }
+        
+        #endregion
+        
+        
+        #region Methods
+        
+        public virtual int Multiply()
+        {
+            return X * Y;
+        }
+        
+        
+        public void MyFunc()
+        {
+            Console.WriteLine("parent class");
+            
+        }
+        
+        
+        public override string ToString()
+        {
+            return $"X = {X} , Y = {Y}";
+        }
+        #endregion
+
+
+// Child.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+namespace Session03OOPDemo
+{
+    
+    internal class Child : Parent
+    {
+        
+        #region Properties
+        
+        public int X {get; set;}
+        public int Y {get; set;}
+        public int Z {get; set;}
+        
+        #endregion
+        
+        #region CTOR
+        
+        public Child(int _x, int _y, int _z):base(_x,_y)
+        {
+            Z=_z;
+        }
+        
+        #endregion
+        
+        #region Methods
+        
+        public override string ToString()
+        {
+            return $"X = {X} , Y = {Y}";
+        }
+        
+        public override Multiply()
+        {
+            // return X * Y * Z;
+            return base.Multiply() * Z;
+        }
+        
+        
+        // new => create new version of function
+        
+        public new void MyFunc()
+        {
+            Console.WriteLine("Child Class");
+        }
+        
+        
+        
+        #endregion
+        
+    }
+}
+
+
+
+
+    }
+}
