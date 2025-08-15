@@ -1,0 +1,316 @@
+// part 1
+
+// 1
+
+using System;
+
+namespace Company
+{
+    public enum SecurityLevel
+    {
+        Guest,
+        Developer,
+        Secretary,
+        DBA
+    }
+
+    public enum Gender
+    {
+        M,
+        F
+    }
+
+    public class Employee
+    {
+        #region Properties
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public SecurityLevel SecurityLevel { get; set; }
+        public double Salary { get; set; }
+        public DateTime HireDate { get; set; }
+        public Gender Gender { get; set; }
+        #endregion
+
+        #region Constructor
+        public Employee(int id, string name, SecurityLevel securityLevel, double salary, DateTime hireDate, Gender gender)
+        {
+
+            if (salary < 0)
+                Console.WriteLine("Salary must be positive");
+
+            ID = id;
+            Name = name;
+            SecurityLevel = securityLevel;
+            Salary = salary;
+            HireDate = hireDate;
+            Gender = gender;
+        }
+        #endregion
+
+        #region Methods
+        public override string ToString()
+        {
+            return $"ID: {ID} | Name: {Name} | Security:  Hire{SecurityLevel} | Salary: {String.Format("{0:C}", Salary)} | Date: {HireDate:dd/MM/yyyy} | Gender: {Gender}";
+        }
+        #endregion
+    }
+
+
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee emp1 = new Employee(1, "Ahmed Ali", SecurityLevel.DBA, 15000, new DateTime(2020, 6, 15), Gender.M);
+            Console.WriteLine(emp1);
+        }
+    }
+
+}
+
+
+// -----------------------------------------------------------------------------------------------------------------------------------------------------
+
+// 2
+
+using System;
+
+namespace Company
+{
+    public class HiringDate
+    {
+        #region Properties
+        public int Day { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
+        #endregion
+
+        #region Constructor
+        public HiringDate(int day, int month, int year)
+        {
+            if (day < 1 || day > 31)
+                Console.WriteLine("Day must be between 1 and 31");
+
+            if (month < 1 || month > 12)
+                Console.WriteLine("Month must be between 1 and 12");
+
+            if (year < 1900)
+                Console.WriteLine("Year must be 1900 or later");
+
+            Day = day;
+            Month = month;
+            Year = year;
+        }
+        #endregion
+
+        #region Methods
+        public override string ToString()
+        {
+            return $"{Day:D2}/{Month:D2}/{Year}";
+        }
+        #endregion
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HiringDate date1 = new HiringDate(15, 6, 2020);
+            HiringDate date2 = new HiringDate(10, 3, 2021);
+
+            Console.WriteLine(date1);
+            Console.WriteLine(date2);
+        }
+    }
+}
+
+// ----------------------------------------------------------------------------------------------------------------------------
+
+
+// 5
+
+using System;
+
+namespace Library
+{
+    
+    public class Book
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string ISBN { get; set; }
+
+        public Book(string title, string author, string isbn)
+        {
+            Title = title;
+            Author = author;
+            ISBN = isbn;
+        }
+
+        public virtual void Display()
+        {
+            Console.WriteLine($"Title: {Title}, Author: {Author}, ISBN: {ISBN}");
+        }
+    }
+
+   
+    public class EBook : Book
+    {
+        public double FileSize { get; set; }
+
+        public EBook(string title, string author, string isbn, double fileSize)
+            : base(title, author, isbn)
+        {
+            FileSize = fileSize;
+        }
+
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine($"File Size: {FileSize} MB");
+        }
+    }
+
+    
+    public class PrintedBook : Book
+    {
+        public int PageCount { get; set; }
+
+        public PrintedBook(string title, string author, string isbn, int pageCount)
+            : base(title, author, isbn)
+        {
+            PageCount = pageCount;
+        }
+
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine($"Page Count: {PageCount}");
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            Book[] books = new Book[]
+            {
+                new EBook("C# Basics", "John Doe", "12345", 2.5),
+                new PrintedBook("OOP Concepts", "Jane Smith", "67890", 300)
+            };
+
+            foreach (var book in books)
+            {
+                book.Display();
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+
+// ----------------------------------------------------------------------------------------------------------------
+
+
+// part 2
+
+//Q1
+
+using System;
+
+namespace CalcApp
+{
+    public class Calculator
+    {
+        
+        public int Add(int a, int b)
+        {
+            return a + b;
+        }
+
+        public int Add(int a, int b, int c)
+        {
+            return a + b + c;
+        }
+
+        public double Add(double a, double b)
+        {
+            return a + b;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Calculator calc = new Calculator();
+
+            Console.WriteLine("Add two int: " + calc.Add(5, 10));
+            Console.WriteLine("Add three int: " + calc.Add(5, 10, 15));
+            Console.WriteLine("Add two doub: " + calc.Add(5.5, 10.3));
+        }
+    }
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------
+
+// Q2
+
+using System;
+
+namespace Shapes
+{
+    public class Rect
+    {
+        public int Width { get; set; }
+        public int Height { get; set; }
+
+     
+        public Rect()
+        {
+            Width = 0;
+            Height = 0;
+        }
+
+        
+        public Rect(int width, int height)
+        {
+            Width = width;
+            Height = height;
+        }
+
+        
+        public Rect(int size)
+        {
+            Width = size;
+            Height = size;
+        }
+
+        public override string ToString()
+        {
+            return $"Rectangle: Width = {Width}, Height = {Height}";
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rect r1 = new Rect();           
+            Rect r2 = new Rect(5, 10);      
+            Rect r3 = new Rect(7);          
+
+            Console.WriteLine(r1);
+            Console.WriteLine(r2);
+            Console.WriteLine(r3);
+        }
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------------
+
+// Q3
+
+
