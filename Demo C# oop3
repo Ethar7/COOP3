@@ -492,6 +492,87 @@ namespace S04OOPDemo.PolyMorphismOveriding
 }
 
 
+// Helper.cs
+
+
+namespace S04OOPDemo
+{
+    
+    
+    internal static class Helper
+    {
+        
+        public int X {get; set;}
+        
+        public int Y {get; set;}
+        
+        public Helper(int _X , int _Y)
+        {
+            
+            X = _X;
+            
+            Y = _Y;
+            
+            pi = 3.14;
+            
+        }
+        
+        public override string ToString()
+        {
+            return $"X = {X} + Y = {Y}";
+        }
+        
+        // static CTOR
+        
+        //      -cant take access modifier
+        
+        //      class can have only one static CTOR
+        //      will exec at least one time per call
+        
+        
+        //     -usage
+        
+        //      1- call static method or static property
+        
+        //      2- create object from class
+        
+        //      3- create object from another class inherited from this class
+        
+        // static Helper()
+        // {
+        //     pi = 3.14;
+        // }
+        
+        public static double CmToInch(double cm)
+        {
+            return cm / 2.54;
+        }
+        
+        private const double pi = 3.14;
+        
+        // static attr
+        
+        // private static double pi;
+        
+        // static prop
+        
+        public static double PI
+        {
+            get {return pi;}
+            // set {pi = value;}
+            
+        }
+        
+        public static double CalcCircleArea(double radius)
+        {
+            return PI * Math.Pow(radius, 2);
+        }
+        
+    }
+    
+}
+
+
 
 
 
